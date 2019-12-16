@@ -1,0 +1,37 @@
+{
+ "name": "Nānā I Ke Kumu",
+ "children": [
+  {
+   "name": "Child",
+   "children": [
+    {"name": "Gender", "size": 1759},
+    {"name": "Rearing Practices", "size": 2165},
+    {"name": "Development", "size": 586},
+    {"name": "Care", "size": 3331}
+   ]
+  },
+  {
+   "name": "Ho'opono",
+   "children": [
+    {"name": "DirtySprite", "size": 8833},
+    {"name": "LineSprite", "size": 1732},
+    {"name": "RectSprite", "size": 3623},
+    {"name": "TextSprite", "size": 10066}
+   ]
+  },
+  {
+   "name": "flex",
+   "children": [
+    {"name": "FlareVis", "size": 4116}
+   ]
+  },
+  {
+   "name": "scale",
+   "children": [
+    {"name": "IScaleMap", "size": 2105},
+    {"name": "LinearScale", "size": 1316},
+    {"name": "TimeScale", "size": 5833}
+   ]
+  }
+ ]
+}
