@@ -1,37 +1,52 @@
 {
- "name": "Nānā I Ke Kumu",
+ "name": "Nānā I Ke \n Kumu",
+ "size": 240,
+ "color": 1,
+ "collapse":  1,
  "children": [
   {
    "name": "Child",
+   "size": 100,
+   "collapse": 1,
+   "color": 2,
    "children": [
-    {"name": "Gender", "size": 1759},
-    {"name": "Rearing Practices", "size": 2165},
-    {"name": "Development", "size": 586},
-    {"name": "Care", "size": 3331}
+    {"name": "Gender", "color": 3, "size": 99},
+    {"name": "Rearing Practices", "color":3, "size": 99},
+    {"name": "Development", "color": 3, "size": 99},
+    {"name": "Care", "color":  3, "size": 99}
    ]
   },
   {
    "name": "Ho'opono",
+   "size":  100,
+   "collapse": 1,
+   "color": 2,
    "children": [
-    {"name": "DirtySprite", "size": 8833},
-    {"name": "LineSprite", "size": 1732},
-    {"name": "RectSprite", "size": 3623},
-    {"name": "TextSprite", "size": 10066}
+    {"name": "Family Practices", "color": 3, "size": 99},
+    {"name": "Spirituality", "color": 3, "size": 99}
    ]
   },
   {
-   "name": "flex",
+   "name":"Death",
+   "size": 100,
+   "collapse": 1,
+   "color": 2,
    "children": [
-    {"name": "FlareVis", "size": 4116}
+    {"name": "Kaumaha", "color": 3, "size": 99},
+    {"name": "Practices", "color": 3, "size": 99}
    ]
   },
   {
-   "name": "scale",
+   "name": "ʻOhana",
+   "size": 100,
+   "collapse": 1,
+   "color": 2,
    "children": [
-    {"name": "IScaleMap", "size": 2105},
-    {"name": "LinearScale", "size": 1316},
-    {"name": "TimeScale", "size": 5833}
-   ]
+    {"name": "Aumakua", "color": 3, "size": 99},
+    {"name": "Kūpuna", "color": 3, "size": 99},
+    {"name": "Mākua", "color": 3, "size": 99},
+    {"name": "Moʻopuna", "color": 3, "size": 99}
+  ]
   }
  ]
 }
