@@ -1,52 +1,154 @@
 {
- "name": "Nānā I Ke \n Kumu",
- "size": 240,
- "color": 1,
- "collapse":  1,
- "children": [
-  {
-   "name": "Child",
-   "size": 100,
-   "collapse": 1,
-   "color": 2,
-   "children": [
-    {"name": "Gender", "color": 3, "size": 99},
-    {"name": "Rearing Practices", "color":3, "size": 99},
-    {"name": "Development", "color": 3, "size": 99},
-    {"name": "Care", "color":  3, "size": 99}
-   ]
-  },
-  {
-   "name": "Ho'opono",
-   "size":  100,
-   "collapse": 1,
-   "color": 2,
-   "children": [
-    {"name": "Family Practices", "color": 3, "size": 99},
-    {"name": "Spirituality", "color": 3, "size": 99}
-   ]
-  },
-  {
-   "name":"Death",
-   "size": 100,
-   "collapse": 1,
-   "color": 2,
-   "children": [
-    {"name": "Kaumaha", "color": 3, "size": 99},
-    {"name": "Practices", "color": 3, "size": 99}
-   ]
-  },
-  {
-   "name": "ʻOhana",
-   "size": 100,
-   "collapse": 1,
-   "color": 2,
-   "children": [
-    {"name": "Aumakua", "color": 3, "size": 99},
-    {"name": "Kūpuna", "color": 3, "size": 99},
-    {"name": "Mākua", "color": 3, "size": 99},
-    {"name": "Moʻopuna", "color": 3, "size": 99}
+  "name": "Nānā I Ke Kumu",
+  "size": 240,
+  "color": 1,
+  "children": [
+    {
+      "name": "Child",
+      "size": 100,
+      "collapse": 1,
+      "color": 2,
+      "children": [
+        {
+          "name": "Gender",
+          "color": 3,
+          "size": 99,
+          "children": [
+            {
+              "name": "Boy Intro - kā i mua",
+              "children": [
+                {
+                  "name": "Page 113-115",
+                  "url":"http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.113&toc=0"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rearing Practices",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Development",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Care",
+          "color": 3,
+          "size": 99,
+          "children": [
+            {
+              "name": "Hānai",
+              "children": [
+                {
+                  "name": "Page 49",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.49&toc=0"
+                },
+                {
+                  "name": "Page 131",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.131&toc=0"
+                },
+                {
+                  "name": "Page 12",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.12&toc=0"
+                },
+                {
+                  "name": "Page 50",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.50&toc=0"
+                },
+                {
+                  "name": "Page 89",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.89&toc=0"
+                },
+                {
+                  "name": "Page 204",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.204&toc=0" 
+                }
+              ]
+            },
+            {
+              "name": "Luhi",
+              "children": [
+                {
+                  "name": "Pages 131-132",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.131&toc=0"
+                },
+                {
+                  "name": "Page 50",
+                  "url": "http://www.ulukau.org/elib/cgi-bin/library?e=d-0qlcc1-000Sec--11en-50-20-frameset-book--1-010escapewin&a=d&d=D0.3.50&toc=0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ho'opono",
+      "size": 100,
+      "collapse": 1,
+      "color": 2,
+      "children": [
+        {
+          "name": "Family Practices",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Spirituality",
+          "color": 3,
+          "size": 99
+        }
+      ]
+    },
+    {
+      "name": "Death",
+      "size": 100,
+      "collapse": 1,
+      "color": 2,
+      "children": [
+        {
+          "name": "Kaumaha",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Practices",
+          "color": 3,
+          "size": 99
+        }
+      ]
+    },
+    {
+      "name": "ʻOhana",
+      "size": 100,
+      "collapse": 1,
+      "color": 2,
+      "children": [
+        {
+          "name": "Aumakua",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Kūpuna",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Mākua",
+          "color": 3,
+          "size": 99
+        },
+        {
+          "name": "Moʻopuna",
+          "color": 3,
+          "size": 99
+        }
+      ]
+    }
   ]
-  }
- ]
 }

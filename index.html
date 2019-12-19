@@ -7,15 +7,17 @@
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 10px sans-serif;
   pointer-events: none;
   text-anchor: middle;
+  color: #ffffe8;
+  color: rgba(255, 255, 232, 1);
 }
 
 line.link {
   fill: none;
   stroke: #9ecae1;
-  stroke-width: 1.5px;
+  stroke-width: 2.5px;
 }
 
 </style>
@@ -29,16 +31,16 @@ line.link {
 
 /* BUILT ON THE WORK OF MIKE BOSTOCK - http://bl.ocks.org/mbostock/1062288 */
 
-var width = 960,
-    height = 500,
+var width = 1800,
+    height = 920,
     root,
     nodes,
     links,
     show_name = false;
 
 var force = d3.layout.force()
-    .linkDistance(40)
-    .charge(-800)
+    .linkDistance(120)
+    .charge(-1000)
 //    .gravity(.05)
     .size([width, height])
     .on("tick", tick);
@@ -95,23 +97,30 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
+      .attr("xlink:href", function(d){return d.url; })
       .on("click", click)
       .call(force.drag);
 
   nodeEnter.append("circle")
-      .attr("r", function(d) { return Math.sqrt(d.size) || 40; })
+      .attr("xlink:href", function(d){return d.url; })
+      .attr("r", 44)
+//      .attr("xlink:href", function(d){return d.url; })
+//      .attr("r", function(d) { return Math.sqrt(d.size) || 40; })
       .append("svg:title")
-      .text(function(d){return d._children ? "" : d.children ? "" : d.name;});
+      .text(function(d){return d._children ? "" : d.children ? "" : "pages: "+d.pages;});
 
 //  nodeEnter.transition()
 //      .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) ; });
     
   nodeEnter.append("text")
+      .attr("xlink:href", function(d){return d.url; })
       .attr("dy", ".35em")
-    .text(function(d) { return d.name; });
+      .text(function(d) { return d.name; })
+      .attr("xlink:href", function(d){return d.url; });
     
   node.select("circle")
-      .style("fill", color);
+      .style("fill", color)
+      .attr("xlink:href", function(d){return d.url; });
 }
 
 function tick() {
@@ -124,8 +133,13 @@ function tick() {
 }
 
 function color(d) {
+//#753f97 dark purple
+//#a9Cef4 light blue
+//#F61057 red
+//#fdb911 yellow
+//#f3e0ec pink
   if(!d.color){ 
-    return "#f3e0ec"; // terminal node
+    return "#a9Cef4"; // terminal node
   }else if(d._children){
     return "#F61057"; // collapsed node
   }else{
@@ -150,13 +164,22 @@ function toggle(d) {
 }
 
 // Toggle children on click.
-function click(d){
+function click(d) {
   if (d3.event.defaultPrevented) return; // ignore drag
-  toggle(d);
-  restart();
-}
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else if (d._children) {
+    d.children = d._children;
+    d._children = null;
+  } else {
+    // This was a leaf node, so redirect.
+    window.open(d.url, 'popUpWindow','height=600,width=800,left=10,top=10,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes'); 
+  }
+   restart();
+ }
 
-// Returns a list of all nodes under the root.
+  // Returns a list of all nodes under the root.
 function flatten(root) {
   var nodes = [], i = 0;
 
