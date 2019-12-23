@@ -16,6 +16,7 @@
           "children": [
             {
               "name": "Boy Intro - kā i mua",
+              "collapse": 1,
               "children": [
                 {
                   "name": "Page 113-115",
@@ -42,6 +43,7 @@
           "children": [
             {
               "name": "Hānai",
+              "collapse": 1,
               "children": [
                 {
                   "name": "Page 49",
@@ -71,6 +73,7 @@
             },
             {
               "name": "Luhi",
+              "collapse": 1,
               "children": [
                 {
                   "name": "Pages 131-132",

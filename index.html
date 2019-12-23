@@ -7,7 +7,7 @@
 }
 
 .node text {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
   pointer-events: none;
   text-anchor: middle;
   color: #ffffe8;
@@ -20,28 +20,42 @@ line.link {
   stroke-width: 2.5px;
 }
 
+
 </style>
 
 <title> Navigatior </title>
 
 <body>
 <div id="info"></div>
+<div id="chart"></div>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
 /* BUILT ON THE WORK OF MIKE BOSTOCK - http://bl.ocks.org/mbostock/1062288 */
 
 var width = 1800,
-    height = 920,
-    root,
+    height = 920;
+
+
+var root,
     nodes,
     links,
     show_name = false;
 
+// Extract the width and height that was computed by CSS.
+var chartDiv = document.getElementById("chart");
+
+//var width = chartDiv.clientWidth - 20
+//??var height = chartDiv.clientHeight - 25;
+
+
+
 var force = d3.layout.force()
-    .linkDistance(120)
-    .charge(-1000)
-//    .gravity(.05)
+    .linkDistance(100)
+//    .chargeDistance(400)
+    .charge(-16000)
+    .friction(.2)
+    .gravity(.1)
     .size([width, height])
     .on("tick", tick);
 
@@ -103,7 +117,7 @@ function update() {
 
   nodeEnter.append("circle")
       .attr("xlink:href", function(d){return d.url; })
-      .attr("r", 44)
+      .attr("r", 48)
 //      .attr("xlink:href", function(d){return d.url; })
 //      .attr("r", function(d) { return Math.sqrt(d.size) || 40; })
       .append("svg:title")
@@ -141,10 +155,10 @@ function color(d) {
   if(!d.color){ 
     return "#a9Cef4"; // terminal node
   }else if(d._children){
-    return "#F61057"; // collapsed node
+    return "#ff6695"; // collapsed node
   }else{
     if(d.color==1){
-      return "#753f97"; // central node
+      return "#d085ff"; // central node
     }else if(d.color==2){
       return "#fdb911"; // first tier node
     }else{
