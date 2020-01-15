@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+
+<!PROJECT SPECIFIC RESOURCES/ EXAMPLES:>
+<!Collapsible Force Layout https://bl.ocks.org/mbostock/1093130>
+<!Hyperlinks in children (d3.js objects) in a collapsible force layout https://stackoverflow.com/questions/20673555/hyperlinks-in-children-d3-js-objects-in-a-collapsible-force-layout>
+<!Force-directed Node-link diagram with hyperlinks https://codepen.io/AmeliaBR/pen/AoFHg>
+<!Static Force Layout with D3.js https://jarrettmeyer.com/2019/01/04/static-force-layout-d3js>
+<!Automatic Text Sizing https://bl.ocks.org/mbostock/1846692>
+
+<!GENERAL D3 RESOURCES>
+<!List General Resources https://www.fullstackpython.com/d3-js.html>
+<!Search Blocks https://blockbuilder.org/search>
+<!Hitchhikers Guide to D3 https://medium.com/@enjalot/the-hitchhikers-guide-to-d3-js-a8552174733a>
+<!Bostockʻs Current Job -Lotʻs examples https://observablehq.com/@d3>
+<!D3 w/ FLask http://benalexkeen.com/creating-graphs-using-flask-and-d3/>
+
 <meta charset="utf-8">
 <style>
 
@@ -7,12 +22,16 @@
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 20px sans-serif;
   pointer-events: none;
   text-anchor: middle;
   color: #ffffe8;
   color: rgba(255, 255, 232, 1);
+  overflow-wrap: break-word; 
+  width: 20px;  
+  border: 1px solid green; 
 }
+
 
 line.link {
   fill: none;
@@ -33,8 +52,8 @@ line.link {
 
 /* BUILT ON THE WORK OF MIKE BOSTOCK - http://bl.ocks.org/mbostock/1062288 */
 
-var width = 1800,
-    height = 920;
+var width = 2800,
+    height = 1800;
 
 
 var root,
@@ -51,11 +70,11 @@ var chartDiv = document.getElementById("chart");
 
 
 var force = d3.layout.force()
-    .linkDistance(100)
-//    .chargeDistance(400)
-    .charge(-16000)
-    .friction(.2)
-    .gravity(.1)
+    .linkDistance(160)
+ //   .chargeDistance(600)
+    .charge(-4000)
+    .friction(.75)
+ //   .gravity(.1)
     .size([width, height])
     .on("tick", tick);
 
@@ -111,15 +130,15 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
-      .attr("xlink:href", function(d){return d.url; })
+  //    .attr("xlink:href", function(d){return d.url; })
       .on("click", click)
       .call(force.drag);
 
   nodeEnter.append("circle")
       .attr("xlink:href", function(d){return d.url; })
-      .attr("r", 48)
+//      .attr("r", 48)
 //      .attr("xlink:href", function(d){return d.url; })
-//      .attr("r", function(d) { return Math.sqrt(d.size) || 40; })
+      .attr("r", size)
       .append("svg:title")
       .text(function(d){return d._children ? "" : d.children ? "" : "pages: "+d.pages;});
 
@@ -130,6 +149,8 @@ function update() {
       .attr("xlink:href", function(d){return d.url; })
       .attr("dy", ".35em")
       .text(function(d) { return d.name; })
+      .style("font-size", function(d) { return Math.min(2 * d.r, (2 * d.r - 8) / this.getComputedTextLength() * 24) + "px"; })
+//      .call(wrap, 100)
       .attr("xlink:href", function(d){return d.url; });
     
   node.select("circle")
@@ -154,8 +175,8 @@ function color(d) {
 //#f3e0ec pink
   if(!d.color){ 
     return "#a9Cef4"; // terminal node
-  }else if(d._children){
-    return "#ff6695"; // collapsed node
+//  }else if(d._children){
+//    return "#fdb911"; // collapsed node
   }else{
     if(d.color==1){
       return "#d085ff"; // central node
@@ -163,6 +184,27 @@ function color(d) {
       return "#fdb911"; // first tier node
     }else{
       return "#f3e0ec" // second tier node
+    }
+  }
+}
+
+function size(d) {
+//#753f97 dark purple
+//#a9Cef4 light blue
+//#F61057 red
+//#fdb911 yellow
+//#f3e0ec pink
+  if(!d.color){ 
+    return 30; // terminal node
+//  }else if(d._children){
+//    return "#fdb911"; // collapsed node
+  }else{
+    if(d.color==1){
+      return 110; // central node
+    }else if(d.color==2){
+      return 80; // first tier node
+    }else{
+      return 50 // second tier node
     }
   }
 }
@@ -177,6 +219,8 @@ function toggle(d) {
   }
 }
 
+var windowObjectReference = null;
+
 // Toggle children on click.
 function click(d) {
   if (d3.event.defaultPrevented) return; // ignore drag
@@ -188,7 +232,8 @@ function click(d) {
     d._children = null;
   } else {
     // This was a leaf node, so redirect.
-    window.open(d.url, 'popUpWindow','height=600,width=800,left=10,top=10,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes'); 
+    windowObjectReference = window.open(d.url, 'popUpWindow','height=600,width=800,left=10,top=10,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes'); 
+    windowObjectReference.find(d.name)
   }
    restart();
  }
@@ -207,5 +252,6 @@ function flatten(root) {
   root.size = recurse(root);
   return nodes;
 }
+
 
 </script>
