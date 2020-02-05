@@ -17,6 +17,11 @@
 <meta charset="utf-8">
 <style>
 
+h1 {
+  font: 50px sans-serif;
+  text-align:center
+}
+
 .node circle {
   cursor: pointer;
 }
@@ -43,7 +48,7 @@ line.link {
 </style>
 
 <title> Navigatior </title>
-
+<h1>"Nānā-I-Ke-Pedia"</h1>
 <body>
 <div id="info"></div>
 <div id="chart"></div>
@@ -70,11 +75,10 @@ var chartDiv = document.getElementById("chart");
 
 
 var force = d3.layout.force()
-    .linkDistance(160)
- //   .chargeDistance(600)
-    .charge(-4000)
-    .friction(.75)
- //   .gravity(.1)
+    .linkDistance(230)
+    .charge(-8000)
+    .friction(.2)
+    .gravity(0)
     .size([width, height])
     .on("tick", tick);
 
@@ -121,7 +125,8 @@ function update() {
   link.exit().remove();
 
   link.enter().insert("line", ".node")
-      .attr("class", "link");
+      .attr("class", "link")
+      .style("stroke", "#9579b3");
 
   // Update nodes.
   node = node.data(nodes, function(d) { return d.id; });
@@ -174,16 +179,16 @@ function color(d) {
 //#fdb911 yellow
 //#f3e0ec pink
   if(!d.color){ 
-    return "#a9Cef4"; // terminal node
+    return "#b9b2b2"; // terminal node
 //  }else if(d._children){
 //    return "#fdb911"; // collapsed node
   }else{
     if(d.color==1){
-      return "#d085ff"; // central node
+      return "#9579b3"; // central node
     }else if(d.color==2){
-      return "#fdb911"; // first tier node
+      return "#F5BC23"; // first tier node
     }else{
-      return "#f3e0ec" // second tier node
+      return "#d1c5de" // second tier node
     }
   }
 }
@@ -195,16 +200,16 @@ function size(d) {
 //#fdb911 yellow
 //#f3e0ec pink
   if(!d.color){ 
-    return 30; // terminal node
+    return 50; // terminal node
 //  }else if(d._children){
 //    return "#fdb911"; // collapsed node
   }else{
     if(d.color==1){
-      return 110; // central node
+      return 140; // central node
     }else if(d.color==2){
-      return 80; // first tier node
+      return 100; // first tier node
     }else{
-      return 50 // second tier node
+      return 80 // second tier node
     }
   }
 }
@@ -255,3 +260,7 @@ function flatten(root) {
 
 
 </script>
+
+<img src="img/logo.png" alt="LT" width="15%">
+
+</body>
