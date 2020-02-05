@@ -1,15 +1,18 @@
 {
   "name": "Nānā I Ke Kumu",
+  "size": 540,
   "color": 1,
   "children": [
     {
       "name": "Child",
+      "size": 100,
       "collapse": 1,
       "color": 2,
       "children": [
         {
           "name": "Gender",
           "color": 3,
+          "size": 99,
           "children": [
             {
               "name": "Boy Intro - kā i mua",
@@ -26,14 +29,17 @@
         {
           "name": "Rearing Practices",
           "color": 3,
+          "size": 99
         },
         {
           "name": "Development",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Care",
           "color": 3,
+          "size": 99,
           "children": [
             {
               "name": "Hānai",
@@ -85,54 +91,65 @@
     },
     {
       "name": "Ho'opono",
+      "size": 100,
       "collapse": 1,
       "color": 2,
       "children": [
         {
           "name": "Family Practices",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Spirituality",
-          "color": 3
+          "color": 3,
+          "size": 99
         }
       ]
     },
     {
       "name": "Death",
+      "size": 100,
       "collapse": 1,
       "color": 2,
       "children": [
         {
           "name": "Kaumaha",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Practices",
-          "color": 3
+          "color": 3,
+          "size": 99
         }
       ]
     },
     {
       "name": "ʻOhana",
+      "size": 100,
       "collapse": 1,
       "color": 2,
       "children": [
         {
           "name": "Aumakua",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Kūpuna",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Mākua",
-          "color": 3
+          "color": 3,
+          "size": 99
         },
         {
           "name": "Moʻopuna",
-          "color": 3
+          "color": 3,
+          "size": 99
         }
       ]
     }
