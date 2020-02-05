@@ -37,28 +37,28 @@ h1 {
   border: 1px solid green; 
 }
 
-
 line.link {
   fill: none;
   stroke: #9ecae1;
   stroke-width: 2.5px;
 }
 
-
 </style>
 
 <title> Navigatior </title>
-<h1>"Nānā-I-Ke-Pedia"</h1>
+
+<h1>Nānā-I-Ke-Pedia</h1>
+
 <body>
-<div id="info"></div>
-<div id="chart"></div>
+
 <script src="https://d3js.org/d3.v3.min.js"></script>
+
 <script>
 
 /* BUILT ON THE WORK OF MIKE BOSTOCK - http://bl.ocks.org/mbostock/1062288 */
 
 var width = 2800,
-    height = 1800;
+    height = 1350;
 
 
 var root,
@@ -66,19 +66,13 @@ var root,
     links,
     show_name = false;
 
-// Extract the width and height that was computed by CSS.
-var chartDiv = document.getElementById("chart");
-
-//var width = chartDiv.clientWidth - 20
-//??var height = chartDiv.clientHeight - 25;
-
-
-
 var force = d3.layout.force()
     .linkDistance(230)
-    .charge(-8000)
-    .friction(.2)
-    .gravity(0)
+    .charge(-80000)
+    .chargeDistance(900)
+    .friction(0.01)
+//    .theta(0.2)
+    .gravity(0.01)
     .size([width, height])
     .on("tick", tick);
 
@@ -141,14 +135,9 @@ function update() {
 
   nodeEnter.append("circle")
       .attr("xlink:href", function(d){return d.url; })
-//      .attr("r", 48)
-//      .attr("xlink:href", function(d){return d.url; })
       .attr("r", size)
       .append("svg:title")
       .text(function(d){return d._children ? "" : d.children ? "" : "pages: "+d.pages;});
-
-//  nodeEnter.transition()
-//      .attr("r", function(d) { return d.children ? 4.5 : Math.sqrt(d.size) ; });
     
   nodeEnter.append("text")
       .attr("xlink:href", function(d){return d.url; })
@@ -194,11 +183,6 @@ function color(d) {
 }
 
 function size(d) {
-//#753f97 dark purple
-//#a9Cef4 light blue
-//#F61057 red
-//#fdb911 yellow
-//#f3e0ec pink
   if(!d.color){ 
     return 50; // terminal node
 //  }else if(d._children){
@@ -226,7 +210,7 @@ function toggle(d) {
 
 var windowObjectReference = null;
 
-// Toggle children on click.
+// Toggle children on click. Also open new window for leaf nodes
 function click(d) {
   if (d3.event.defaultPrevented) return; // ignore drag
   if (d.children) {
