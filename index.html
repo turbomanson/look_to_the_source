@@ -80,8 +80,8 @@ var force = d3.layout.force()
     .on("tick", tick);
 
 var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr('width', window.innerWidth - 20)
+    .attr('height', window.innerHeight - 300)
     .call(d3.behavior.zoom().scaleExtent([.3, 5]).on("zoom", zoom))
     .append("g")
     .call(d3.behavior.zoom().scaleExtent([.3, 5]).on("zoom", zoom))
@@ -281,4 +281,4 @@ function wrap(text, width) {
 
 </body>
 <div></div>
-<img src="img/logo.png" alt="LT" width="15%" align="bottom">
+<img src="img/logo.png" alt="LT" width=400 align="bottom">
