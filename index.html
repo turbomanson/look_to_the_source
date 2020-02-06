@@ -64,25 +64,28 @@ line.link {
 var width = 1800,
     height = 850;
 
-
 var root,
     nodes,
     links,
     show_name = false;
 
 var force = d3.layout.force()
-    .linkDistance(230)
-    .charge(-80000)
+    .linkDistance(175)
+    .charge(-25000)
     .chargeDistance(900)
-    .friction(0.01)
-//    .theta(0.2)
+    .friction(0.2)
+    .theta(0.01)
     .gravity(0.01)
     .size([width, height])
     .on("tick", tick);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .call(d3.behavior.zoom().scaleExtent([.3, 5]).on("zoom", zoom))
+    .append("g")
+    .call(d3.behavior.zoom().scaleExtent([.3, 5]).on("zoom", zoom))
+    .append("g");
 
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
@@ -268,6 +271,11 @@ function wrap(text, width) {
   });
 }
 
+
+  function zoom() {
+    var zoom = d3.event;
+    svg.attr("transform", "translate(" + zoom.translate + ")scale(" + zoom.scale + ")");
+  }
 
 </script>
 
